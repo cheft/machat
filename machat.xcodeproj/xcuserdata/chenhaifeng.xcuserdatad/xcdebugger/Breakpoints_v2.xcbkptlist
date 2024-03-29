@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "AAE63A24-6BAF-44EC-B1C3-6F90A39EA3FA"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED4BFD3E-58C3-41BF-8854-F6310CA75E75"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "view/SideView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4"
+            endingLineNumber = "4"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3086B99-EE23-4E29-844E-475D10DE244B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "view/SideView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "D3086B99-EE23-4E29-844E-475D10DE244B - 6e9395b996d10fec"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "machat.SideView.body.getter : some"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/view/SideView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  uuid = "D3086B99-EE23-4E29-844E-475D10DE244B - b255286dddb62bd9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Divider, &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt;&gt; in machat.SideView.body.getter : some"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/view/SideView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "6"
+                  endingLineNumber = "6"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "08508495-B7F1-4F7D-9132-FE7F48667FF1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "util/request.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "postRequest(urlString:data:headers:proxyUrl:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "08508495-B7F1-4F7D-9132-FE7F48667FF1 - b1d6a429d6d67874"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "976">
+               </Location>
+               <Location
+                  uuid = "08508495-B7F1-4F7D-9132-FE7F48667FF1 - 560bbcd88a97387c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "1712">
+               </Location>
+               <Location
+                  uuid = "08508495-B7F1-4F7D-9132-FE7F48667FF1 - 1793f4d9c01305b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String, Swift.String) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "08508495-B7F1-4F7D-9132-FE7F48667FF1 - 8512bd487509a9cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Foundation.Data, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "2328">
+               </Location>
+               <Location
+                  uuid = "08508495-B7F1-4F7D-9132-FE7F48667FF1 - a73e910e46a89a49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String, Swift.String) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Foundation.Data, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD230F45-A5BA-473F-B265-39D41B9A30CA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "util/request.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "postRequest(urlString:data:headers:proxyUrl:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "BD230F45-A5BA-473F-B265-39D41B9A30CA - b1d6a429d6d6788b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "1588">
+               </Location>
+               <Location
+                  uuid = "BD230F45-A5BA-473F-B265-39D41B9A30CA - b1d6a429d6d6788b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "BD230F45-A5BA-473F-B265-39D41B9A30CA - bd9f6f30a501e057"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Foundation.Data, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E0C8B33B-F392-446A-B271-E9369491E249"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "util/request.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "postRequest(urlString:data:headers:proxyUrl:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "E0C8B33B-F392-446A-B271-E9369491E249 - b1d6a429d6d679e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "1968">
+               </Location>
+               <Location
+                  uuid = "E0C8B33B-F392-446A-B271-E9369491E249 - b1d6a429d6d679e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  uuid = "E0C8B33B-F392-446A-B271-E9369491E249 - b1d6a429d6d679e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "660">
+               </Location>
+               <Location
+                  uuid = "E0C8B33B-F392-446A-B271-E9369491E249 - bd9f6f30a501e13c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Foundation.Data, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "E0C8B33B-F392-446A-B271-E9369491E249 - bd9f6f30a501e13c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Foundation.Data, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "656">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83254E0E-E1DB-47BC-9577-728819F92083"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "util/request.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "postRequest(urlString:data:headers:proxyUrl:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "83254E0E-E1DB-47BC-9577-728819F92083 - 560bbcd88a97c58b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "2196">
+               </Location>
+               <Location
+                  uuid = "83254E0E-E1DB-47BC-9577-728819F92083 - b1d6a429d6d67a45"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "976">
+               </Location>
+               <Location
+                  uuid = "83254E0E-E1DB-47BC-9577-728819F92083 - bd9f6f30a501e299"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Foundation.Data, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "1004">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A28AF70E-E3B8-4CFE-B310-51053E4D1509"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "util/request.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "postRequest(urlString:data:headers:proxyUrl:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "A28AF70E-E3B8-4CFE-B310-51053E4D1509 - b1d6a429d6d679c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "2544">
+               </Location>
+               <Location
+                  uuid = "A28AF70E-E3B8-4CFE-B310-51053E4D1509 - b1d6a429d6d679c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "2032">
+               </Location>
+               <Location
+                  uuid = "A28AF70E-E3B8-4CFE-B310-51053E4D1509 - bd9f6f30a501e11d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Foundation.Data, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "1336">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B979A04D-2955-4B53-91F9-3E1703B632A8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "util/request.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "postRequest(urlString:data:headers:proxyUrl:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "B979A04D-2955-4B53-91F9-3E1703B632A8 - 560bbcd88a97c5e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "2212">
+               </Location>
+               <Location
+                  uuid = "B979A04D-2955-4B53-91F9-3E1703B632A8 - b1d6a429d6d67a26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Any, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1032">
+               </Location>
+               <Location
+                  uuid = "B979A04D-2955-4B53-91F9-3E1703B632A8 - bd9f6f30a501e2fa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Foundation.Data, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1072">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5E05CF4-E124-4FAB-A39E-E8F97742723C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "util/request.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "postRequest(urlString:data:headers:proxyUrl:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "D5E05CF4-E124-4FAB-A39E-E8F97742723C - 8512bd48750956d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Foundation.Data, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "3156">
+               </Location>
+               <Location
+                  uuid = "D5E05CF4-E124-4FAB-A39E-E8F97742723C - bd9f6f30a501e057"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in machat.postRequest(urlString: Swift.String, data: Swift.String, headers: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, completion: (Swift.Result&lt;Foundation.Data, machat.NetworkError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/util/request.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F40439EE-FBFD-48D8-B881-D7CDF55D30F5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "util/request.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "postRequest(urlString:data:headers:proxyUrl:completion:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
