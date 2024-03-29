@@ -21,7 +21,9 @@ struct PopupFormView: View {
                 TextField("", text: $proxyUrl).frame(width: 420)
                 
                 Text("&nbsp;")
-                Text("待办项：会话管理(prompt)、聊天搜索、聊天排序、数据清理、性能优化等")
+                Text("待办项：会话管理(prompt、上下文)、流式请求、聊天搜索、滚动优化")
+                Text("待办项：模型参数设置、数据导出、数据清理、性能优化、美化主题等")
+                Text("努力更新中...")
             }
             .onAppear {
                 if !setting.isEmpty {
@@ -49,6 +51,6 @@ struct PopupFormView: View {
                     }
                 }
             }
-        }.frame(width: 460, height: 220)
+        }.frame(width: 460, height: 230)
     }
 }
