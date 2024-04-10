@@ -671,10 +671,10 @@
             filePath = "view/ChatView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "sendMessage()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "B21DB668-2E0D-4E60-92D1-79E9E137F3D7 - 3e4d4887bc8eaa62"
@@ -719,10 +719,58 @@
             filePath = "view/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E66C413F-66DD-4C75-8446-80284E38556F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "view/ChatView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "sendMessage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E66C413F-66DD-4C75-8446-80284E38556F - e5410a90fcff9f2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for machat.ChatView.sendMessage() async -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/view/ChatView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "203"
+                  endingLineNumber = "203"
+                  offsetFromSymbolStart = "1124">
+               </Location>
+               <Location
+                  uuid = "E66C413F-66DD-4C75-8446-80284E38556F - ba4acca3024a8788"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (machat.Message) -&gt; Swift.Bool in machat.ChatView.sendMessage() async -&gt; ()"
+                  moduleName = "machat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chenhaifeng/Documents/Study/swift/machat/view/ChatView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "203"
+                  endingLineNumber = "203"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

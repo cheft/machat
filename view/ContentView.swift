@@ -15,67 +15,24 @@ struct ChatItem: Hashable, Identifiable {
 }
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-//    @Environment(\.realmConfiguration) var realmConfiguration
 
     @State private var showingPopup = false
+    @State private var selectedItem: Chat?
 
-    @State private var selectedItem: ChatItem?
-    let data = [
-        ChatItem(id: 1, icon: "message", name: "技术问答 Chat 1"),
-        ChatItem(id: 2, icon: "message", name: "技术问答 Chat 2"),
-        ChatItem(id: 3, icon: "message", name: "技术问答 Chat 3"),
-        ChatItem(id: 4, icon: "message", name: "技术问答 Chat 4"),
-        ChatItem(id: 5, icon: "message", name: "技术问答 Chat 5"),
-        ChatItem(id: 6, icon: "message", name: "技术问答 Chat 6"),
-        ChatItem(id: 7, icon: "message", name: "技术问答 Chat 7"),
-        ChatItem(id: 8, icon: "message", name: "技术问答 Chat 8"),
-        ChatItem(id: 9, icon: "message", name: "技术问答 Chat 9"),
-        ChatItem(id: 10, icon: "message", name: "语言翻译 Chat 1"),
-        ChatItem(id: 11, icon: "message", name: "语言翻译 Chat 2"),
-        ChatItem(id: 12, icon: "message", name: "语言翻译 Chat 3"),
-        ChatItem(id: 13, icon: "message", name: "语言翻译 Chat 4"),
-        ChatItem(id: 14, icon: "message", name: "生活交流 Chat 1"),
-        ChatItem(id: 15, icon: "message", name: "情感交流 Chat 2"),
-    ]
-    
-//    @State private var chats: Results<Chat>
     @ObservedResults(Chat.self) var chats
 
     var realm: Realm
     
-//    func setupRealm() {
-//        do {
-//            // 使用环境中的配置初始化 Realm
-//            realm = try Realm(configuration: realmConfiguration)
-//            
-//            // 在此处使用 realm 对象
-//            print("Realm file location: \(realm.configuration.fileURL!)")
-//        } catch {
-//            // 处理可能出现的错误
-//            print("Error initializing Realm with configuration: \(error)")
-//        }
-//    }
-    
     init() {
-//        let config = Realm.Configuration(
-//            schemaVersion: 1 // Increment this number by 1 from the previous version
-//        )
-//
-//        Realm.Configuration.defaultConfiguration = config
-        
         realm = try! Realm()
-
-//        chats = realm.objects(Chat.self)
         if chats.isEmpty {
             let chat = Chat(name: "技术问答 Chat 1")
             try! realm.write {
                 realm.add(chat)
             }
-//            chats = realm.objects(Chat.self)
         }
     }
-//    
+
     func deleteItem(chat: Chat) {
         guard let chatInRealm = realm.object(ofType: Chat.self, forPrimaryKey: chat._id) else {
             // 如果chat对象不属于当前Realm实例，可以进行适当的错误处理
@@ -91,11 +48,10 @@ struct ContentView: View {
     }
 
     func addItem() {
-        let chat = Chat(name: "技术问答 Chat")
+        let chat = Chat(name: "问答")
         try! realm.write {
             realm.add(chat)
         }
-//        chats = realm.objects(Chat.self)
     }
     
     var body: some View {
@@ -149,11 +105,9 @@ struct ContentView: View {
 
                 List {
                     ForEach(chats, id: \.self) { chat in
-//                        NavigationLink(destination: ChatView(chatId: chat._id)) {
-//                            Label(chat.name, systemImage: "message").padding(4)
-
-//                        }
-                        Text(chat.name).padding(4).contextMenu {
+                        NavigationLink(destination: ChatView(chatId: chat._id)) {
+                            Label("\(chat.name)@\(chat._id)", systemImage: "message").padding(4)
+                        }.contextMenu {
                             Button(action: {
                                 // 在这里处理删除操作
                                 deleteItem(chat: chat)
@@ -178,8 +132,7 @@ struct ContentView: View {
 //                }
                 .onAppear {
                     // 默认选择第一个 Item
-                    selectedItem = data.first
-//                    modelContext.insert(Message(id: UUID().uuidString, chatId: 1, role: "system", content: "💰你好！有什么我可以帮助你的吗？", time: Date()))
+                    selectedItem = chats.first
                 }
                 .listStyle(SidebarListStyle())
                 .frame(minWidth: 220, idealWidth: 250, maxWidth: 300, maxHeight: .infinity)
@@ -192,10 +145,6 @@ struct ContentView: View {
                 }
             }
         }
-//        .onAppear {
-//                        // 在视图出现时获取 Realm 实例
-//                        self.setupRealm()
-//                    }
     }
     
     // 切换侧边栏的函数
@@ -205,7 +154,3 @@ struct ContentView: View {
 #endif
     }
 }
-//
-//#Preview {
-//    ContentView()
-//}
