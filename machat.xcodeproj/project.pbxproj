@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		93AFAD462BC68F7900F98DE8 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 93AFAD452BC68F7900F98DE8 /* OpenAI */; };
+		93AFAD4A2BC6DD8100F98DE8 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AFAD492BC6DD8100F98DE8 /* Package.swift */; };
+		93AFAD4D2BC6E1DD00F98DE8 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 93AFAD4C2BC6E1DD00F98DE8 /* Realm */; };
+		93AFAD4F2BC6E1DD00F98DE8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93AFAD4E2BC6E1DD00F98DE8 /* RealmSwift */; };
 		93C7C90B2BB51F60008B92C0 /* MachatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7C90A2BB51F60008B92C0 /* MachatApp.swift */; };
 		93C7C90D2BB51F60008B92C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7C90C2BB51F60008B92C0 /* ContentView.swift */; };
 		93C7C90F2BB51F61008B92C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C7C90E2BB51F61008B92C0 /* Assets.xcassets */; };
@@ -23,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93AFAD492BC6DD8100F98DE8 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		93C7C9072BB51F60008B92C0 /* machat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = machat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C7C90A2BB51F60008B92C0 /* MachatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachatApp.swift; sourceTree = "<group>"; };
 		93C7C90C2BB51F60008B92C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93AFAD4F2BC6E1DD00F98DE8 /* RealmSwift in Frameworks */,
+				93AFAD4D2BC6E1DD00F98DE8 /* Realm in Frameworks */,
 				93AFAD462BC68F7900F98DE8 /* OpenAI in Frameworks */,
 				93C7C93C2BB58535008B92C0 /* MarkdownView in Frameworks */,
 			);
@@ -54,6 +60,7 @@
 		93C7C8FE2BB51F60008B92C0 = {
 			isa = PBXGroup;
 			children = (
+				93AFAD492BC6DD8100F98DE8 /* Package.swift */,
 				93C7C9482BB6A6F7008B92C0 /* screenshot */,
 				93C7C9462BB6A671008B92C0 /* README.md */,
 				93C7C9212BB55901008B92C0 /* util */,
@@ -137,6 +144,8 @@
 			packageProductDependencies = (
 				93C7C93B2BB58535008B92C0 /* MarkdownView */,
 				93AFAD452BC68F7900F98DE8 /* OpenAI */,
+				93AFAD4C2BC6E1DD00F98DE8 /* Realm */,
+				93AFAD4E2BC6E1DD00F98DE8 /* RealmSwift */,
 			);
 			productName = "test-swiftui";
 			productReference = 93C7C9072BB51F60008B92C0 /* machat.app */;
@@ -169,6 +178,7 @@
 			packageReferences = (
 				93C7C93A2BB58535008B92C0 /* XCRemoteSwiftPackageReference "MarkdownView" */,
 				93AFAD442BC68F7900F98DE8 /* XCRemoteSwiftPackageReference "OpenAI" */,
+				93AFAD4B2BC6E1DD00F98DE8 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 93C7C9082BB51F60008B92C0 /* Products */;
 			projectDirPath = "";
@@ -200,6 +210,7 @@
 				93C7C91A2BB521BD008B92C0 /* SharedData.swift in Sources */,
 				93C7C90D2BB51F60008B92C0 /* ContentView.swift in Sources */,
 				93C7C9402BB59913008B92C0 /* PopupFormView.swift in Sources */,
+				93AFAD4A2BC6DD8100F98DE8 /* Package.swift in Sources */,
 				93C7C90B2BB51F60008B92C0 /* MachatApp.swift in Sources */,
 				93C7C93E2BB58CB6008B92C0 /* Models.swift in Sources */,
 				93C7C9452BB66547008B92C0 /* color.swift in Sources */,
@@ -437,6 +448,14 @@
 				minimumVersion = 0.2.7;
 			};
 		};
+		93AFAD4B2BC6E1DD00F98DE8 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.49.1;
+			};
+		};
 		93C7C93A2BB58535008B92C0 /* XCRemoteSwiftPackageReference "MarkdownView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LiYanan2004/MarkdownView.git";
@@ -452,6 +471,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 93AFAD442BC68F7900F98DE8 /* XCRemoteSwiftPackageReference "OpenAI" */;
 			productName = OpenAI;
+		};
+		93AFAD4C2BC6E1DD00F98DE8 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93AFAD4B2BC6E1DD00F98DE8 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		93AFAD4E2BC6E1DD00F98DE8 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93AFAD4B2BC6E1DD00F98DE8 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		93C7C93B2BB58535008B92C0 /* MarkdownView */ = {
 			isa = XCSwiftPackageProductDependency;

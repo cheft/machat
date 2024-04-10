@@ -6,15 +6,17 @@
 //
 import SwiftData
 import SwiftUI
+import RealmSwift
 
 @main
-struct MachatApp: App {
+struct MachatApp: SwiftUI.App {
     var sharedData = SharedData()
     @State private var searchText = ""
 
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(sharedData).modelContainer(for: [Message.self, Setting.self]) // 设置消息模型的模型容器
+           ContentView()
+                .environment(\.realmConfiguration, Realm.Configuration( /* ... */ ))
                 .frame(minWidth: 800, minHeight: 600)
                 .toolbar {
                     // 搜索框和设置按钮
