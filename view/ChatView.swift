@@ -65,53 +65,67 @@ struct ChatView: View {
                 }
 
             }.frame(minHeight: 460).padding(.all, 0.1).background(Color.white)
-        
-            // 工具栏
-            //            HStack {
-            //                Button(action: {
-            //                    // 工具栏按钮动作
-            //                }) {
-            //                    Image(systemName: "photo")
-            //                }
-            //                .buttonStyle(PlainButtonStyle())
-            //
-            //                Button(action: {
-            //                    // 工具栏按钮动作
-            //                }) {
-            //                    Image(systemName: "paperclip")
-            //                }
-            //                .buttonStyle(PlainButtonStyle())
-            //
-            //                Button(action: {
-            //                    // 发送消息动作
-            //                    sendMessage()
-            //                }) {
-            //                    Text("发送")
-            //                }
-            //                .buttonStyle(PlainButtonStyle())
-            //                .disabled(inputText.isEmpty) // 当输入框为空时禁用发送按钮
-            //                // 你可以根据需要添加更多的按钮
-            //            }
-            //            .frame(minHeight: 4)
-            TextField("输入prompt敲回车发送", text: $inputText)
-                .onSubmit {
-                    sendMessage()
-                }
-                .alert("提示🔔", isPresented: $showAlert) {
-                    Button("OK", role: .cancel) { }
-                } message: {
-                    Text("请先设置 apikey 才可以聊天")
-                }
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.all, 10).padding(.bottom, 11)
-                .frame(height: 40) // 这会设置TextField的高度
-                .disabled(isTextFieldDisabled)
-            //            TextEditor(text: $inputText)
-            //                .border(Color.gray, width: 0.5) // 设置边框，以便更清晰地显示输入区域
-            //                .padding()
-            //                .frame(minHeight: 10)
+            inputBar()
         }.background(containerBg).padding(.all, 0).padding(.top, 4)
     }
+    
+    
+    @ViewBuilder private func inputBar() -> some View {
+        HStack {
+            TextEditor(
+                text: $inputText
+            )
+            .padding(.vertical, -8)
+            .padding(.horizontal, -4)
+            .frame(minHeight: 20, maxHeight: 100)
+            .foregroundColor(.primary)
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
+            .font(.system(size: 13))
+            .background(
+                RoundedRectangle(
+                    cornerRadius: 16,
+                    style: .continuous
+                )
+                .fill(Color.white)
+                .overlay(
+                    RoundedRectangle(
+                        cornerRadius: 16,
+                        style: .continuous
+                    )
+                    .stroke(
+                        Color.white,
+                        lineWidth: 1
+                    )
+                )
+            )
+            .fixedSize(horizontal: false, vertical: true)
+            .onSubmit {
+                withAnimation {
+//                    tapSendMessage(scrollViewProxy: scrollViewProxy)
+                    sendMessage()
+                }
+            }
+            .padding(.leading)
+
+            Button(action: {
+                withAnimation {
+//                    tapSendMessage(scrollViewProxy: scrollViewProxy)
+                    sendMessage()
+                }
+            }) {
+                Image(systemName: "paperplane")
+                    .resizable()
+                    .foregroundColor(primaryColor)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 24, height: 24)
+                    .padding(.trailing)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .disabled(inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        }
+        .padding(.bottom)
+    }
+    
     
     func sendMessage() {
         var apiKey: String = ""
@@ -153,9 +167,9 @@ struct ChatView: View {
         postRequest(urlString: urlString, data: postData, headers: customHeaders, proxyUrl: proxyUrl) { result in
             switch result {
             case .success(let data):
-                //                if let rawJSONString = String(data: data, encoding: .utf8) {
-                //                   print("返回的原始JSON字符串：\(rawJSONString)")
-                //                }
+//                if let rawJSONString = String(data: data, encoding: .utf8) {
+//                   print("返回的原始JSON字符串：\(rawJSONString)")
+//                }
                 isTextFieldDisabled = false
                 do {
                     // 尝试将JSON数据反序列化为Any
