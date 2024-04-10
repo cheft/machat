@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93AFAD462BC68F7900F98DE8 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 93AFAD452BC68F7900F98DE8 /* OpenAI */; };
 		93C7C90B2BB51F60008B92C0 /* MachatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7C90A2BB51F60008B92C0 /* MachatApp.swift */; };
 		93C7C90D2BB51F60008B92C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7C90C2BB51F60008B92C0 /* ContentView.swift */; };
 		93C7C90F2BB51F61008B92C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C7C90E2BB51F61008B92C0 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93AFAD462BC68F7900F98DE8 /* OpenAI in Frameworks */,
 				93C7C93C2BB58535008B92C0 /* MarkdownView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,6 +136,7 @@
 			name = machat;
 			packageProductDependencies = (
 				93C7C93B2BB58535008B92C0 /* MarkdownView */,
+				93AFAD452BC68F7900F98DE8 /* OpenAI */,
 			);
 			productName = "test-swiftui";
 			productReference = 93C7C9072BB51F60008B92C0 /* machat.app */;
@@ -165,6 +168,7 @@
 			mainGroup = 93C7C8FE2BB51F60008B92C0;
 			packageReferences = (
 				93C7C93A2BB58535008B92C0 /* XCRemoteSwiftPackageReference "MarkdownView" */,
+				93AFAD442BC68F7900F98DE8 /* XCRemoteSwiftPackageReference "OpenAI" */,
 			);
 			productRefGroup = 93C7C9082BB51F60008B92C0 /* Products */;
 			projectDirPath = "";
@@ -354,10 +358,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -394,10 +398,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -425,6 +429,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		93AFAD442BC68F7900F98DE8 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.7;
+			};
+		};
 		93C7C93A2BB58535008B92C0 /* XCRemoteSwiftPackageReference "MarkdownView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LiYanan2004/MarkdownView.git";
@@ -436,6 +448,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		93AFAD452BC68F7900F98DE8 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93AFAD442BC68F7900F98DE8 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
 		93C7C93B2BB58535008B92C0 /* MarkdownView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 93C7C93A2BB58535008B92C0 /* XCRemoteSwiftPackageReference "MarkdownView" */;
