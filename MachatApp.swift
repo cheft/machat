@@ -4,13 +4,11 @@
 //
 //  Created by chenhaifeng on 2024/3/28.
 //
-import SwiftData
 import SwiftUI
 import RealmSwift
 
 @main
 struct MachatApp: SwiftUI.App {
-    var sharedData = SharedData()
     @State private var searchText = ""
     
     var body: some Scene {
@@ -22,8 +20,13 @@ struct MachatApp: SwiftUI.App {
                     ToolbarItem(placement: .automatic) {
                         HStack {
                             // 搜索框
-//                            TextField("搜索", text: $searchText)
-//                                .textFieldStyle(RoundedBorderTextFieldStyle()).padding(40).frame(width: 520)
+                            TextField("关键字搜索，删除关键字则返回列表", text: $searchText) { isEditing in
+                                // 这将在用户开始或停止编辑时调用
+                            } onCommit: {
+                                // 这将在用户按下完成键时调用
+                                print("搜索内容: \(searchText)")
+                                textPublisher.text = searchText
+                            }.textFieldStyle(RoundedBorderTextFieldStyle()).padding(40).frame(width: 520)
                         }
                         // HStack 自适应宽度
                     }

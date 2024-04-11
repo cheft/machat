@@ -35,7 +35,7 @@ struct ContentView: View {
     @State private var showingPopup = false
     @State private var selectedChatId: ObjectId?
     
-    @State private var editLock = false
+    @State private var showingAlert = false
     
     @ObservedResults(Chat.self) var chats
     
@@ -52,6 +52,13 @@ struct ContentView: View {
     }
     
     func deleteItem(chat: Chat) {
+        let objectsToDelete = realm.objects(Message.self).filter("chatId = %@", chat._id)
+        if objectsToDelete.count > 0 {
+            try! realm.write {
+                realm.delete(objectsToDelete)
+            }
+        }
+
         guard let chatInRealm = realm.object(ofType: Chat.self, forPrimaryKey: chat._id) else {
             // 如果chat对象不属于当前Realm实例，可以进行适当的错误处理
             print("Error: Chat object does not belong to the current Realm instance.")
@@ -62,7 +69,6 @@ struct ContentView: View {
         try! realm.write {
             realm.delete(chatInRealm)
         }
-        
     }
     
     func addItem() {
@@ -147,13 +153,11 @@ struct ContentView: View {
                             Image(systemName: "message")
                         }.contextMenu {
                             Button(action: {
-                                // 在这里处理删除操作
                                 deleteItem(chat: chat)
                             }) {
                                 Text(" \(chat.name)")
                                 Image(systemName: "trash")
                             }
-                            // 添加更多的按钮和操作
                         }
                     }
                 }

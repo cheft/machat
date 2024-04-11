@@ -18,7 +18,10 @@ class MessagesViewModel: ObservableObject {
     
     @Published var messages: [Message] = []
     
+    private var chatId: ObjectId
+    
     init(chatId: ObjectId) {
+        self.chatId = chatId
         do {
             realm = try Realm()
         } catch {
@@ -51,65 +54,75 @@ class MessagesViewModel: ObservableObject {
         // 当ViewModel将要被销毁时，取消数据监听
         token?.invalidate()
     }
+    
+    func search(keyword: String) {
+        if (keyword.isEmpty) {
+            let messagesResults = realm.objects(Message.self).filter("chatId == %@", chatId)
+            self.messages = Array(messagesResults)
+        } else {
+            let messagesResults = realm.objects(Message.self).filter("content CONTAINS[c] %@", keyword)
+            self.messages = Array(messagesResults)
+        }
+    }
 }
 
 
 struct TextView: NSViewRepresentable {
-
-   @Binding var text: String
-   @Binding var height: CGFloat
-   var maxHeight: CGFloat
-
-   func makeCoordinator() -> Coordinator { Coordinator(self) }
-   
-   func makeNSView(context: Context) -> NSTextView {
-      let nsView = NSTextView()
-      nsView.delegate = context.coordinator
-      nsView.isEditable = true
-      nsView.isSelectable = true
-      nsView.isVerticallyResizable = true
-      nsView.isHorizontallyResizable = false
-      nsView.autoresizingMask = .width
-      nsView.textContainer?.containerSize = NSSize(width: nsView.bounds.width, height: CGFloat.greatestFiniteMagnitude)
-      nsView.textContainer?.widthTracksTextView = true
-      return nsView
-   }
-
-   func updateNSView(_ nsView: NSTextView, context: Context) {
-      nsView.string = text
-      DispatchQueue.main.async {
-         self.height = min(self.maxHeight, nsView.intrinsicContentSize.height)
-      }
-   }
-
-   class Coordinator : NSObject, NSTextViewDelegate {
-      
-      var textView: TextView
-
-      init(_ textView: TextView) {
-         self.textView = textView
-      }
-      
-      func textDidChange(_ notification: Notification) {
-         if let textView = notification.object as? NSTextView {
-            self.textView.text = textView.string
-            self.textView.height = min(self.textView.maxHeight, textView.intrinsicContentSize.height)
-         }
-      }
-      
-      func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-         if commandSelector == #selector(NSStandardKeyBindingResponding.insertNewline(_:)) {
-            if NSEvent.modifierFlags.contains(.shift) {
-               textView.insertText("\n", replacementRange: textView.selectedRange())
-               return true
-            } else {
-               print("Enter pressed without Shift")
-               return true
+    
+    @Binding var text: String
+    @Binding var height: CGFloat
+    var maxHeight: CGFloat
+    
+    func makeCoordinator() -> Coordinator { Coordinator(self) }
+    
+    func makeNSView(context: Context) -> NSTextView {
+        let nsView = NSTextView()
+        nsView.delegate = context.coordinator
+        nsView.isEditable = true
+        nsView.isSelectable = true
+        nsView.isVerticallyResizable = true
+        nsView.isHorizontallyResizable = false
+        nsView.autoresizingMask = .width
+        nsView.textContainer?.containerSize = NSSize(width: nsView.bounds.width, height: CGFloat.greatestFiniteMagnitude)
+        nsView.textContainer?.widthTracksTextView = true
+        return nsView
+    }
+    
+    func updateNSView(_ nsView: NSTextView, context: Context) {
+        nsView.string = text
+        DispatchQueue.main.async {
+            self.height = min(self.maxHeight, nsView.intrinsicContentSize.height)
+        }
+    }
+    
+    class Coordinator : NSObject, NSTextViewDelegate {
+        
+        var textView: TextView
+        
+        init(_ textView: TextView) {
+            self.textView = textView
+        }
+        
+        func textDidChange(_ notification: Notification) {
+            if let textView = notification.object as? NSTextView {
+                self.textView.text = textView.string
+                self.textView.height = min(self.textView.maxHeight, textView.intrinsicContentSize.height)
             }
-         }
-         return false
-      }
-   }
+        }
+        
+        func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+            if commandSelector == #selector(NSStandardKeyBindingResponding.insertNewline(_:)) {
+                if NSEvent.modifierFlags.contains(.shift) {
+                    textView.insertText("\n", replacementRange: textView.selectedRange())
+                    return true
+                } else {
+                    print("Enter pressed without Shift")
+                    return true
+                }
+            }
+            return false
+        }
+    }
 }
 
 
@@ -128,7 +141,6 @@ struct ChatView: View {
     @State private var textHeight: CGFloat = 50.0  // State variable for the height
     @State private var isTextFieldDisabled: Bool = false
     @State private var showAlert = false
-
     
     init(chatId: ObjectId) {
         self.chatId = chatId
@@ -137,6 +149,7 @@ struct ChatView: View {
     
     var body: some View {
         VStack {
+            
             ScrollView {
                 ScrollViewReader { proxy in
                     LazyVStack{
@@ -181,8 +194,21 @@ struct ChatView: View {
             //            .frame(minHeight: 460).padding(.all, 0.1)
             .background(Color.white)
             inputBar()
-        }.background(containerBg)
-            .padding(.all, 0).padding(.top, 4)
+            TextField("", text: Binding(get: {
+                textPublisher.text
+            }, set:{
+                textPublisher.text = $0
+            }))
+            .frame(width: 0, height: 0)
+            .opacity(0).onReceive(textPublisher.$text) { keyword in
+                // 当文本变化时，此处的代码会被执行。
+                print("Text is now \(keyword)")
+                // 你可以在这里调用函数，如：
+                // self.doSomething(with: newValue)
+                viewModel.search(keyword: keyword)
+            }
+        }.background(containerBg).padding(.all, 0).padding(.top, 4)
+        
     }
     
     
@@ -197,10 +223,12 @@ struct ChatView: View {
                     }
                 }
             )
+            .environment(\.colorScheme, .light)
+            .previewDisplayName("Light Mode")
             
-//            TextEditor(
-//                text: $inputText
-//            )
+            //            TextEditor(
+            //                text: $inputText
+            //            )
             .padding(.vertical, -8)
             .padding(.horizontal, -4)
             .frame(minHeight: 40, maxHeight: 200)
@@ -280,7 +308,7 @@ struct ChatView: View {
         do {
             var prompts: [ChatQuery.ChatCompletionMessageParam] {
                 var messageParams = [ChatQuery.ChatCompletionMessageParam]()
-                let lastThreeMessages = viewModel.messages.suffix(3)
+                let lastThreeMessages = viewModel.messages.suffix(5)
                 for message in lastThreeMessages {
                     // 这里假设你有一个初始化 ChatQuery.ChatCompletionMessageParam 的方法
                     let messageParam = ChatQuery.ChatCompletionMessageParam(role: message.role == "user" ? ChatQuery.ChatCompletionMessageParam.Role.user : ChatQuery.ChatCompletionMessageParam.Role.system, content: message.content)!
@@ -291,7 +319,7 @@ struct ChatView: View {
             
             let chatsStream: AsyncThrowingStream<ChatStreamResult, Error> = openai!.chatsStream(
                 query: ChatQuery(
-                    messages: prompts, model: "gpt-4", maxTokens: 1000
+                    messages: prompts, model: "gpt-4", maxTokens: 3000
                 )
             )
             
