@@ -82,9 +82,9 @@ struct ContentView: View {
                     .buttonStyle(PlainButtonStyle())
                     .padding(.trailing, 10) // 设置按钮与容器右边界的距离
                     .sheet(isPresented: $showingPopup) {
-//                        PopupFormView(closeAction: {
-//                            showingPopup = false
-//                        })
+                        PopupFormView(closeAction: {
+                            showingPopup = false
+                        })
                     }
                 }
                 .padding(.vertical)

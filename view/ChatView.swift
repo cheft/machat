@@ -1,25 +1,54 @@
 //
 //  ContentView.swift
-//  test-swiftui
+//  machat
 //
 //  Created by chenhaifeng on 2024/3/28.
 //
 
-import SwiftData
 import SwiftUI
 import MarkdownView
 import OpenAI
 import RealmSwift
 
-class RealmManager: ObservableObject {
-    var realm: Realm
+class MessagesViewModel: ObservableObject {
+    @Published var realm: Realm
+
+    private var token: NotificationToken?
     
-    init() {
+    @Published var messages: [Message] = []
+    
+    init(chatId: ObjectId) {
         do {
             realm = try Realm()
         } catch {
             fatalError("Failed to initialize Realm: \(error)")
         }
+        // 获取筛选后的Results对象
+        let messagesResults = realm.objects(Message.self).filter("chatId == %@", chatId)
+        
+        // 将Results转换为SwiftUI可以使用的数组
+        self.messages = Array(messagesResults)
+        
+        // 监听Results对象的变化
+        token = messagesResults.observe { [weak self] (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial:
+                // 最初加载数据时，Results已经被筛选和转换为数组
+                break
+            case .update(let results, _, _, _):
+//                print(results)
+                // 当数据发生变化时，更新Published属性
+                self?.messages = Array(results)
+            case .error(let error):
+                // 处理错误
+                print(error)
+            }
+        }
+    }
+    
+    deinit {
+        // 当ViewModel将要被销毁时，取消数据监听
+        token?.invalidate()
     }
 }
 
@@ -29,53 +58,38 @@ struct ChatView: View {
     
     @State private var openai: OpenAIProtocol?
 
-    var chatId: ObjectId = ObjectId()
+    var chatId: ObjectId
     
-    
-    @ObservedResults(Message.self) var messages
+    @StateObject private var viewModel: MessagesViewModel
 
-//    @State var messages: [Message] = []
-    
     @State private var inputText: String = ""
     @State private var isTextFieldDisabled: Bool = false
     @State private var showAlert = false
     
-    @ObservedObject var realmManager = RealmManager()
-
-//    init() {
-//        realm = try! Realm()
-//    }
-//    init(chatId: ObjectId) {
-//        self.chatId = chatId
-////        let predicate = #Predicate<Message> {
-////            $0.chatId == chatId
-////        }
-////        
-////        _messages = Query(filter: predicate, sort: \.time) // order: .reverse
-//    }
-  
+    init(chatId: ObjectId) {
+        self.chatId = chatId
+        _viewModel = StateObject(wrappedValue: MessagesViewModel(chatId: chatId))
+    }
+      
     var body: some View {
         VStack {
             ScrollView {
                 ScrollViewReader { proxy in
                     LazyVStack{
-                        ForEach(messages.indices, id: \.self) { index in
-                            MarkdownView(text: self.messages[index].content)
+                        ForEach(viewModel.messages.indices, id: \.self) { index in
+                            MarkdownView(text: viewModel.messages[index].content)
                                 .padding(.all, 12)
-                                .foregroundColor(self.messages[index].role == "system" ? nil : .white)
+                                .foregroundColor(viewModel.messages[index].role == "system" ? nil : .white)
                                 .background(
-                                    self.messages[index].role == "system" ? nil : LinearGradient(gradient: Gradient(colors: [bgColor1, bgColor2]), startPoint: .leading, endPoint: .trailing)
+                                    viewModel.messages[index].role == "system" ? nil : LinearGradient(gradient: Gradient(colors: [bgColor1, bgColor2]), startPoint: .leading, endPoint: .trailing)
                                 )
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
-                                .frame(maxWidth: .infinity, alignment: self.messages[index].role == "system" ? .leading : .trailing)
-                                .listRowSeparator(.hidden)
+                                .frame(maxWidth: .infinity, alignment: viewModel.messages[index].role == "system" ? .leading : .trailing)
                                 .textSelection(.enabled)
                                 .id(index)
                         }
                     }.onAppear() {
-                        proxy.scrollTo(messages.count - 1, anchor: .bottom)
-                    }.onChange(of: messages) {
-                        proxy.scrollTo(messages.count - 1, anchor: .bottom)
+                        proxy.scrollTo(viewModel.messages.count - 1, anchor: .bottom)
                     }.padding(.all, 10)
                 }
 
@@ -166,20 +180,17 @@ struct ChatView: View {
         }
         isTextFieldDisabled = true
         let newMessage = Message(msgId: UUID().uuidString, chatId: chatId, role: "user", content: inputText, time: Date())
-        try! realmManager.realm.write {
-            realmManager.realm.add(newMessage)
+        try! viewModel.realm.write {
+            viewModel.realm.add(newMessage)
+            viewModel.messages.append(newMessage)
+            inputText = ""
         }
-//        messages.append(newMessage)
-//        context.insert(newMessage)
-        
+
         do {
-//            let prompts = messages.map { message in
-//                ChatQuery.ChatCompletionMessageParam(role: message.role == "user" ? ChatQuery.ChatCompletionMessageParam.Role.user : ChatQuery.ChatCompletionMessageParam.Role.system, content: message.content)!
-//            }
-            
             var prompts: [ChatQuery.ChatCompletionMessageParam] {
                 var messageParams = [ChatQuery.ChatCompletionMessageParam]()
-                for message in messages {
+                let lastThreeMessages = viewModel.messages.suffix(3)
+                for message in lastThreeMessages {
                     // 这里假设你有一个初始化 ChatQuery.ChatCompletionMessageParam 的方法
                     let messageParam = ChatQuery.ChatCompletionMessageParam(role: message.role == "user" ? ChatQuery.ChatCompletionMessageParam.Role.user : ChatQuery.ChatCompletionMessageParam.Role.system, content: message.content)!
                     messageParams.append(messageParam)
@@ -187,12 +198,9 @@ struct ChatView: View {
                 return messageParams
             }
             
-            inputText = ""
-            print(prompts)
-            
             let chatsStream: AsyncThrowingStream<ChatStreamResult, Error> = openai!.chatsStream(
                 query: ChatQuery(
-                    messages: prompts, model: "gpt-4", maxTokens: 250
+                    messages: prompts, model: "gpt-4", maxTokens: 1000
                 )
             )
             
@@ -200,31 +208,30 @@ struct ChatView: View {
                 for choice in partialChatResult.choices {
                     let messageText = choice.delta.content ?? ""
                     let msg = Message(msgId: partialChatResult.id, chatId: chatId, role: "system", content: messageText, time: Date())
-                    if let existingMessageIndex = messages.firstIndex(where: { $0.msgId == partialChatResult.id }) {
+                    if let existingMessageIndex = viewModel.messages.firstIndex(where: { $0.msgId == partialChatResult.id }) {
 //                        print("update msg \(existingMessageIndex)")
-                        let previousMessage = messages[existingMessageIndex]
+                        let previousMessage = viewModel.messages[existingMessageIndex]
 
-                        let frozenObject = messages[existingMessageIndex]
+                        let frozenObject = viewModel.messages[existingMessageIndex]
                         if frozenObject.isFrozen {
                             // Thaw the object to get a live, mutable version.
                             if let liveObject = frozenObject.thaw() {
                                 // Now you can modify the live object within a write transaction.
-                                try? realmManager.realm.write {
+                                try? viewModel.realm.write {
                                     liveObject.content =  previousMessage.content + msg.content
                                 }
-                            } else {
-                                // Handle the error - the object could not be thawed (e.g., if the Realm instance was closed).
                             }
                         } else {
                             // The object is not frozen, you can modify it directly within a write transaction.
-                            try? realmManager.realm.write {
-                                messages[existingMessageIndex].content = previousMessage.content + msg.content
+                            try? viewModel.realm.write {
+                                viewModel.messages[existingMessageIndex].content = previousMessage.content + msg.content
                             }
                         }
                     } else {
 //                        print("new msg \(msg)")
-                        try! realmManager.realm.write {
-                            realmManager.realm.add(msg)
+                        try! viewModel.realm.write {
+                            viewModel.realm.add(msg)
+                            viewModel.messages.append(msg)
                         }
 //                        messages.append(msg)
 //                        context.insert(msg)
@@ -236,60 +243,5 @@ struct ChatView: View {
             print(error)
             isTextFieldDisabled = false
         }
-        
-        
-//        let urlString = "https://api.openai.com/v1/chat/completions"
-//        //        let urlString = "http://localhost:11434/api/chat"
-//        
-//        let postData = """
-//        {
-//            "model": "gpt-4",
-//            "temperature": 0,
-//            "format": "json",
-//            "messages": [
-//                {"role": "user", "content": "\(inputText)"}
-//            ]
-//        }
-//        """
-//        
-//        let customHeaders = [
-//            "Authorization": "Bearer \(apiKey)",
-//        ]
-//        
-
-//        postRequest(urlString: urlString, data: postData, headers: customHeaders, proxyUrl: proxyUrl) { result in
-//            switch result {
-//            case .success(let data):
-////                if let rawJSONString = String(data: data, encoding: .utf8) {
-////                   print("返回的原始JSON字符串：\(rawJSONString)")
-////                }
-//                isTextFieldDisabled = false
-//                do {
-//                    // 尝试将JSON数据反序列化为Any
-//                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-//                        // 尝试获取choices数组
-//                        if let choices = json["choices"] as? [[String: Any]] {
-//                            // 获取第一个choice对象
-//                            if let firstChoice = choices.first {
-//                                // 尝试获取message字典
-//                                if let message = firstChoice["message"] as? [String: Any] {
-//                                    // 尝试读取content和role
-//                                    if let content = message["content"] as? String {
-//                                        let msg = Message(id: UUID().uuidString, chatId: chatId, role: "system", content: content, time: Date())
-//                                        context.insert(msg)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                } catch {
-//                    print("解析JSON时发生错误：\(error)")
-//                }
-//            case .failure(let error):
-//                isTextFieldDisabled = false
-//                print("Error: \(error)")
-//                // 在这里处理错误
-//            }
-//        }
     }
 }

@@ -16,7 +16,6 @@ struct MachatApp: SwiftUI.App {
     var body: some Scene {
         WindowGroup {
            ContentView()
-                .environment(\.realmConfiguration, Realm.Configuration( /* ... */ ))
                 .frame(minWidth: 800, minHeight: 600)
                 .toolbar {
                     // 搜索框和设置按钮

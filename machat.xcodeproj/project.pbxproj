@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		93AFAD462BC68F7900F98DE8 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 93AFAD452BC68F7900F98DE8 /* OpenAI */; };
-		93AFAD4A2BC6DD8100F98DE8 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AFAD492BC6DD8100F98DE8 /* Package.swift */; };
 		93AFAD4D2BC6E1DD00F98DE8 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 93AFAD4C2BC6E1DD00F98DE8 /* Realm */; };
 		93AFAD4F2BC6E1DD00F98DE8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93AFAD4E2BC6E1DD00F98DE8 /* RealmSwift */; };
 		93C7C90B2BB51F60008B92C0 /* MachatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7C90A2BB51F60008B92C0 /* MachatApp.swift */; };
@@ -26,7 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		93AFAD492BC6DD8100F98DE8 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		93C7C9072BB51F60008B92C0 /* machat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = machat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C7C90A2BB51F60008B92C0 /* MachatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachatApp.swift; sourceTree = "<group>"; };
 		93C7C90C2BB51F60008B92C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 		93C7C8FE2BB51F60008B92C0 = {
 			isa = PBXGroup;
 			children = (
-				93AFAD492BC6DD8100F98DE8 /* Package.swift */,
 				93C7C9482BB6A6F7008B92C0 /* screenshot */,
 				93C7C9462BB6A671008B92C0 /* README.md */,
 				93C7C9212BB55901008B92C0 /* util */,
@@ -210,7 +207,6 @@
 				93C7C91A2BB521BD008B92C0 /* SharedData.swift in Sources */,
 				93C7C90D2BB51F60008B92C0 /* ContentView.swift in Sources */,
 				93C7C9402BB59913008B92C0 /* PopupFormView.swift in Sources */,
-				93AFAD4A2BC6DD8100F98DE8 /* Package.swift in Sources */,
 				93C7C90B2BB51F60008B92C0 /* MachatApp.swift in Sources */,
 				93C7C93E2BB58CB6008B92C0 /* Models.swift in Sources */,
 				93C7C9452BB66547008B92C0 /* color.swift in Sources */,
@@ -363,7 +359,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.picupmedia.crossapp.machat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -403,7 +399,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.picupmedia.crossapp.machat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
