@@ -10,6 +10,7 @@
 		93AFAD462BC68F7900F98DE8 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 93AFAD452BC68F7900F98DE8 /* OpenAI */; };
 		93AFAD4D2BC6E1DD00F98DE8 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 93AFAD4C2BC6E1DD00F98DE8 /* Realm */; };
 		93AFAD4F2BC6E1DD00F98DE8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 93AFAD4E2BC6E1DD00F98DE8 /* RealmSwift */; };
+		93B905F22BC7CF1500884541 /* MacEditorTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B905F12BC7CF1500884541 /* MacEditorTextView.swift */; };
 		93C7C90B2BB51F60008B92C0 /* MachatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7C90A2BB51F60008B92C0 /* MachatApp.swift */; };
 		93C7C90D2BB51F60008B92C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7C90C2BB51F60008B92C0 /* ContentView.swift */; };
 		93C7C90F2BB51F61008B92C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C7C90E2BB51F61008B92C0 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93B905F12BC7CF1500884541 /* MacEditorTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEditorTextView.swift; sourceTree = "<group>"; };
 		93C7C9072BB51F60008B92C0 /* machat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = machat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C7C90A2BB51F60008B92C0 /* MachatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachatApp.swift; sourceTree = "<group>"; };
 		93C7C90C2BB51F60008B92C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				93C7C91B2BB52301008B92C0 /* ChatView.swift */,
 				93C7C90C2BB51F60008B92C0 /* ContentView.swift */,
 				93C7C93F2BB59913008B92C0 /* PopupFormView.swift */,
+				93B905F12BC7CF1500884541 /* MacEditorTextView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93B905F22BC7CF1500884541 /* MacEditorTextView.swift in Sources */,
 				93C7C91A2BB521BD008B92C0 /* SharedData.swift in Sources */,
 				93C7C90D2BB51F60008B92C0 /* ContentView.swift in Sources */,
 				93C7C9402BB59913008B92C0 /* PopupFormView.swift in Sources */,

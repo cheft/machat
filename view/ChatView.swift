@@ -53,67 +53,65 @@ class MessagesViewModel: ObservableObject {
     }
 }
 
-struct TextInput: NSViewRepresentable {
-    @Binding var text: String
-    @Binding var height: CGFloat
-    
-    class Coordinator: NSObject, NSTextViewDelegate {
-        var parent: TextInput
 
-        init(_ parent: TextInput) {
-            self.parent = parent
-        }
+struct TextView: NSViewRepresentable {
 
-        func textDidChange(_ notification: Notification) {
-            if let textView = notification.object as? NSTextView {
-                DispatchQueue.main.async {
-                    self.parent.text = textView.string
-                    self.parent.height = textView.intrinsicContentSize.height
-                }
+   @Binding var text: String
+   @Binding var height: CGFloat
+   var maxHeight: CGFloat
+
+   func makeCoordinator() -> Coordinator { Coordinator(self) }
+   
+   func makeNSView(context: Context) -> NSTextView {
+      let nsView = NSTextView()
+      nsView.delegate = context.coordinator
+      nsView.isEditable = true
+      nsView.isSelectable = true
+      nsView.isVerticallyResizable = true
+      nsView.isHorizontallyResizable = false
+      nsView.autoresizingMask = .width
+      nsView.textContainer?.containerSize = NSSize(width: nsView.bounds.width, height: CGFloat.greatestFiniteMagnitude)
+      nsView.textContainer?.widthTracksTextView = true
+      return nsView
+   }
+
+   func updateNSView(_ nsView: NSTextView, context: Context) {
+      nsView.string = text
+      DispatchQueue.main.async {
+         self.height = min(self.maxHeight, nsView.intrinsicContentSize.height)
+      }
+   }
+
+   class Coordinator : NSObject, NSTextViewDelegate {
+      
+      var textView: TextView
+
+      init(_ textView: TextView) {
+         self.textView = textView
+      }
+      
+      func textDidChange(_ notification: Notification) {
+         if let textView = notification.object as? NSTextView {
+            self.textView.text = textView.string
+            self.textView.height = min(self.textView.maxHeight, textView.intrinsicContentSize.height)
+         }
+      }
+      
+      func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+         if commandSelector == #selector(NSStandardKeyBindingResponding.insertNewline(_:)) {
+            if NSEvent.modifierFlags.contains(.shift) {
+               textView.insertText("\n", replacementRange: textView.selectedRange())
+               return true
+            } else {
+               print("Enter pressed without Shift")
+               return true
             }
-        }
-        
-        func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-            if commandSelector == #selector(NSStandardKeyBindingResponding.insertNewline(_:)) {
-                if NSEvent.modifierFlags.contains(.shift) {
-                    // 如果当前按下了 Shift 键
-                    textView.insertText("\n", replacementRange: textView.selectedRange())
-                    return true
-                } else {
-                    // 处理非 Shift+Enter 的情况，例如，你可能想要执行发送操作
-                    print("Enter pressed without Shift")
-                    // 执行默认的 Enter 键行为
-                    return true
-                }
-            }
-            return false
-        }
-    
-    }
-    
-    func makeNSView(context: Context) -> NSTextView {
-        let scrollView = NSScrollView()
-        let textView = NSTextView()
-        textView.delegate = context.coordinator
-//        textView.isVerticallyResizable = true
-//        textView.isHorizontallyResizable = false
-//        textView.autoresizingMask = [.width]
-        scrollView.documentView = textView
-        scrollView.hasVerticalScroller = true
-        return textView
-    }
-
-    func updateNSView(_ nsView: NSTextView, context: Context) {
-        nsView.string = text
-        DispatchQueue.main.async {
-            self.height = nsView.intrinsicContentSize.height
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
+         }
+         return false
+      }
+   }
 }
+
 
 struct ChatView: View {
     
@@ -125,11 +123,12 @@ struct ChatView: View {
     
     @StateObject private var viewModel: MessagesViewModel
     @State private var lastMessage: String = ""
-
+    
     @State private var inputText: String = ""
-    @State private var inputHeight: CGFloat = 20.0  // State variable for the height
+    @State private var textHeight: CGFloat = 50.0  // State variable for the height
     @State private var isTextFieldDisabled: Bool = false
     @State private var showAlert = false
+
     
     init(chatId: ObjectId) {
         self.chatId = chatId
@@ -160,7 +159,7 @@ struct ChatView: View {
                                 }
                             }
                         }
-//                        .padding(.bottom, 10)
+                        //                        .padding(.bottom, 10)
                     }.onAppear() {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             withAnimation {
@@ -179,7 +178,7 @@ struct ChatView: View {
                 }
                 
             }
-//            .frame(minHeight: 460).padding(.all, 0.1)
+            //            .frame(minHeight: 460).padding(.all, 0.1)
             .background(Color.white)
             inputBar()
         }.background(containerBg)
@@ -189,40 +188,49 @@ struct ChatView: View {
     
     @ViewBuilder private func inputBar() -> some View {
         HStack {
-                        TextEditor(
-                            text: $inputText
-                        )
-//            TextInput(text: $inputText, height: $inputHeight)
-                .padding(.vertical, -8)
-                .padding(.horizontal, -4)
-                .frame(minHeight: 20, maxHeight: 100)
-                .foregroundColor(.primary)
-                .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-                .font(.system(size: 13))
-                .background(
+            MacEditorTextView(
+                text: $inputText,
+                isEditable: true,
+                onCommit: {
+                    Task {
+                        await sendMessage()
+                    }
+                }
+            )
+            
+//            TextEditor(
+//                text: $inputText
+//            )
+            .padding(.vertical, -8)
+            .padding(.horizontal, -4)
+            .frame(minHeight: 40, maxHeight: 200)
+            .foregroundColor(.primary)
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
+            .font(.system(size: 13))
+            .background(
+                RoundedRectangle(
+                    cornerRadius: 16,
+                    style: .continuous
+                )
+                .fill(Color.white)
+                .overlay(
                     RoundedRectangle(
                         cornerRadius: 16,
                         style: .continuous
                     )
-                    .fill(Color.white)
-                    .overlay(
-                        RoundedRectangle(
-                            cornerRadius: 16,
-                            style: .continuous
-                        )
-                        .stroke(
-                            Color.white,
-                            lineWidth: 1
-                        )
+                    .stroke(
+                        Color.white,
+                        lineWidth: 1
                     )
                 )
-                .fixedSize(horizontal: false, vertical: true)
-                .alert("提示🔔", isPresented: $showAlert) {
-                    Button("OK", role: .cancel) { }
-                } message: {
-                    Text("请先设置 apikey 才可以聊天")
-                }
-                .padding(.leading)
+            )
+            .fixedSize(horizontal: false, vertical: true)
+            .alert("提示🔔", isPresented: $showAlert) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text("请先设置 apikey 才可以聊天")
+            }
+            .padding(.leading)
             
             Button(action: {
                 Task {

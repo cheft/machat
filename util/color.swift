@@ -24,7 +24,7 @@ func hexToColor(hex: String) -> Color {
     return Color(red: Double(r) / 255, green: Double(g) / 255, blue: Double(b) / 255)
 }
 
-let primaryColor = hexToColor(hex: "#3571d6")
-let bgColor1 = hexToColor(hex: "#5993f6")
-let bgColor2 = hexToColor(hex: "#3571d6")
+let primaryColor = hexToColor(hex: "#4496ff")
+let bgColor1 = hexToColor(hex: "#3c91f1")
+let bgColor2 = hexToColor(hex: "#4496ff")
 let containerBg = hexToColor(hex: "#ededec")
