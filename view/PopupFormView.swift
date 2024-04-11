@@ -3,7 +3,7 @@ import RealmSwift
 
 class PopupFormViewModel: ObservableObject {
     let realm: Realm
-
+    
     init() {
         do {
             realm = try Realm()
@@ -15,7 +15,7 @@ class PopupFormViewModel: ObservableObject {
 
 struct PopupFormView: View {
     @ObservedResults(Setting.self) var setting
-
+    
     @State private var apiKey: String = "sk-*"
     @State private var proxyUrl: String = "127.0.0.1:7890"
     

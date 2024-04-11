@@ -14,13 +14,31 @@ struct ChatItem: Hashable, Identifiable {
     let name: String
 }
 
+struct EditableTextField: View {
+    @State private var text: String
+    var onSave: (String) -> Void
+    
+    init(text: String, onSave: @escaping (String) -> Void) {
+        _text = State(initialValue: text)
+        self.onSave = onSave
+    }
+    
+    var body: some View {
+        TextField("Enter name", text: $text, onCommit: {
+            onSave(text)
+        })
+    }
+}
+
 struct ContentView: View {
-
+    
     @State private var showingPopup = false
-    @State private var selectedItem: Chat?
-
+    @State private var selectedChatId: ObjectId?
+    
+    @State private var editLock = false
+    
     @ObservedResults(Chat.self) var chats
-
+    
     var realm: Realm
     
     init() {
@@ -32,27 +50,43 @@ struct ContentView: View {
             }
         }
     }
-
+    
     func deleteItem(chat: Chat) {
         guard let chatInRealm = realm.object(ofType: Chat.self, forPrimaryKey: chat._id) else {
             // 如果chat对象不属于当前Realm实例，可以进行适当的错误处理
             print("Error: Chat object does not belong to the current Realm instance.")
             return
         }
-
+        
         // 删除属于当前Realm实例的chat对象
         try! realm.write {
             realm.delete(chatInRealm)
         }
-
+        
     }
-
+    
     func addItem() {
-        let chat = Chat(name: "问答")
+        let chat = Chat(name: "问答 Chat \(chats.count + 1)")
         try! realm.write {
             realm.add(chat)
         }
     }
+    
+    func updateItem(chat: Chat, newName: String) {
+        if chat.isFrozen {
+            if let liveObject = chat.thaw() {
+                try? realm.write {
+                    liveObject.name = newName
+                }
+            }
+        }
+        else {
+            try? realm.write {
+                chat.name = newName
+            }
+        }
+    }
+    
     
     var body: some View {
         NavigationView {
@@ -91,22 +125,26 @@ struct ContentView: View {
                 
                 Divider()
                 
-               HStack {
-                   Spacer()
-                   Button(action: addItem) {
-                       Image(systemName: "plus.circle.fill")
-                           .resizable()
-                           .frame(width: 16, height: 16)
-                           .padding(.trailing, 20)
-                   }
-                   .buttonStyle(BorderlessButtonStyle())
-               }
-               .listRowInsets(EdgeInsets())
-
+                HStack {
+                    Spacer()
+                    Button(action: addItem) {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                            .padding(.trailing, 20)
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                }
+                .listRowInsets(EdgeInsets())
+                
                 List {
                     ForEach(chats, id: \.self) { chat in
-                        NavigationLink(destination: ChatView(chatId: chat._id)) {
-                            Label("\(chat.name)@\(chat._id)", systemImage: "message").padding(4)
+                        NavigationLink(destination: ChatView(chatId: chat._id), tag: chat._id, selection: $selectedChatId) {
+                            // Label("\(chat.name)@\(chat._id)", systemImage: "message").padding(4)
+                            EditableTextField(text: chat.name) { newName in
+                                updateItem(chat: chat, newName: newName)
+                            }
+                            Image(systemName: "message")
                         }.contextMenu {
                             Button(action: {
                                 // 在这里处理删除操作
@@ -119,20 +157,9 @@ struct ContentView: View {
                         }
                     }
                 }
-
-          
-                // 列表项
-//                List(data, id: \.self, selection: $chats) { item in
-//                    NavigationLink(destination: ChatView(chatId: item.id)) {
-//                        Label(item.name, systemImage: item.icon).padding(4)
-//                    }
-//                }
-//                .navigationDestination(for: ChatItem.self) { item in
-//                    ChatView(chatId: item.id)
-//                }
                 .onAppear {
                     // 默认选择第一个 Item
-                    selectedItem = chats.first
+                    selectedChatId = chats.first?._id
                 }
                 .listStyle(SidebarListStyle())
                 .frame(minWidth: 220, idealWidth: 250, maxWidth: 300, maxHeight: .infinity)

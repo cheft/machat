@@ -671,8 +671,8 @@
             filePath = "view/ChatView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "sendMessage()"
             landmarkType = "7">
             <Locations>
@@ -719,8 +719,8 @@
             filePath = "view/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -735,8 +735,8 @@
             filePath = "view/ChatView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "sendMessage()"
             landmarkType = "7">
             <Locations>

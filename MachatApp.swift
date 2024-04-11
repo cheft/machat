@@ -12,10 +12,10 @@ import RealmSwift
 struct MachatApp: SwiftUI.App {
     var sharedData = SharedData()
     @State private var searchText = ""
-
+    
     var body: some Scene {
         WindowGroup {
-           ContentView()
+            ContentView()
                 .frame(minWidth: 800, minHeight: 600)
                 .toolbar {
                     // 搜索框和设置按钮
