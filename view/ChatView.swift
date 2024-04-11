@@ -160,7 +160,7 @@ struct ChatView: View {
                                 }
                             }
                         }
-                        .padding(.bottom, 34)
+//                        .padding(.bottom, 10)
                     }.onAppear() {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             withAnimation {

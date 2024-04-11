@@ -22,8 +22,8 @@ struct MachatApp: SwiftUI.App {
                     ToolbarItem(placement: .automatic) {
                         HStack {
                             // 搜索框
-                            TextField("搜索", text: $searchText)
-                                .textFieldStyle(RoundedBorderTextFieldStyle()).padding(40).frame(width: 520)
+//                            TextField("搜索", text: $searchText)
+//                                .textFieldStyle(RoundedBorderTextFieldStyle()).padding(40).frame(width: 520)
                         }
                         // HStack 自适应宽度
                     }

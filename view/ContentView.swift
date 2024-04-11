@@ -92,7 +92,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 HStack {
-                    Image(systemName: "message") // Logo 图标，可以替换为你的应用 Logo
+                    Image(systemName: "message.fill")
                         .resizable()
                         .foregroundColor(primaryColor)
                         .scaledToFit()
@@ -100,7 +100,7 @@ struct ContentView: View {
                         .padding(.leading, 16)
                     
                     Text("Machat")
-                        .font(.system(size: 32))
+                        .font(.system(size: 24))
                         .font(.headline)
                         .padding(.leading, 8)
                     
