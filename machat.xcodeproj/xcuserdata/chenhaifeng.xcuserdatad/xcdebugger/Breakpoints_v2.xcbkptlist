@@ -671,8 +671,8 @@
             filePath = "view/ChatView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "sendMessage()"
             landmarkType = "7">
             <Locations>
@@ -735,10 +735,8 @@
             filePath = "view/ChatView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
-            landmarkName = "sendMessage()"
-            landmarkType = "7">
+            startingLineNumber = "370"
+            endingLineNumber = "370">
             <Locations>
                <Location
                   uuid = "E66C413F-66DD-4C75-8446-80284E38556F - e5410a90fcff9f2b"
