@@ -144,7 +144,7 @@ struct ContentView: View {
                 .listRowInsets(EdgeInsets())
                 
                 List {
-                    ForEach(chats, id: \.self) { chat in
+                    ForEach(chats.reversed(), id: \.self) { chat in
                         NavigationLink(destination: ChatView(chatId: chat._id), tag: chat._id, selection: $selectedChatId) {
                             // Label("\(chat.name)@\(chat._id)", systemImage: "message").padding(4)
                             EditableTextField(text: chat.name) { newName in
@@ -158,7 +158,7 @@ struct ContentView: View {
                                 Text(" \(chat.name)")
                                 Image(systemName: "trash")
                             }
-                        }
+                        }.padding(.top, 4).padding(.bottom, 6).padding(.leading, 4)
                     }
                 }
                 .onAppear {
