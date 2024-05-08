@@ -102,7 +102,6 @@ extension MacEditorTextView {
             }
             
             self.parent.text = textView.string
-            self.parent.onCommit()
         }
         
         func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {

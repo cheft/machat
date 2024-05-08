@@ -202,7 +202,7 @@ struct ChatView: View {
             .frame(width: 0, height: 0)
             .opacity(0).onReceive(textPublisher.$text) { keyword in
                 // 当文本变化时，此处的代码会被执行。
-                print("Text is now \(keyword)")
+                // print("Text is now \(keyword)")
                 // 你可以在这里调用函数，如：
                 // self.doSomething(with: newValue)
                 viewModel.search(keyword: keyword)
