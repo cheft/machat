@@ -282,10 +282,10 @@ struct ChatView: View {
     
     func sendMessage() async {
         var apiKey: String = ""
-        //        var proxyUrl: String = ""
+        var gptModel: String = "gpt-4"
         if !setting.isEmpty {
             apiKey = setting[0].apiKey
-            //            proxyUrl = setting[0].proxyUrl
+            gptModel = setting[0].gptModel
         }
         if (apiKey == "") {
             showAlert = true
@@ -319,7 +319,7 @@ struct ChatView: View {
             
             let chatsStream: AsyncThrowingStream<ChatStreamResult, Error> = openai!.chatsStream(
                 query: ChatQuery(
-                    messages: prompts, model: "gpt-4", maxTokens: 3000
+                    messages: prompts, model: gptModel
                 )
             )
             

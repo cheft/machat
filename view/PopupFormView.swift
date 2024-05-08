@@ -45,8 +45,8 @@ struct PopupFormView: View {
 //                TextField("", text: $contextNum).frame(width: 420)
 //                
                 Text("&nbsp;")
-                Text("请输入代理地址")
-                TextField("", text: $proxyUrl).frame(width: 420)
+                Text("请输入模型名称")
+                TextField("", text: $gptModel).frame(width: 420)
                 //                Text("&nbsp;")
                 //                Text("待办项：会话管理(prompt、上下文)、流式请求、聊天搜索、滚动优化")
                 //                Text("待办项：模型参数设置、数据导出、数据清理、性能优化、美化主题等")
@@ -55,7 +55,7 @@ struct PopupFormView: View {
             .onAppear {
                 if !setting.isEmpty {
                     apiKey = setting[0].apiKey
-                    proxyUrl = setting[0].proxyUrl
+                    gptModel = setting[0].gptModel
                 }
             }
             .toolbar {
@@ -72,20 +72,20 @@ struct PopupFormView: View {
                                 if let liveObject = s.thaw() {
                                     try? viewModel.realm.write {
                                         liveObject.apiKey = apiKey
-                                        liveObject.proxyUrl = proxyUrl
+                                        liveObject.gptModel = gptModel
                                     }
                                 }
                             }
                             else {
                                 try? viewModel.realm.write {
                                     s.apiKey = apiKey
-                                    s.proxyUrl = proxyUrl
+                                    s.gptModel = gptModel
                                 }
                             }
                             
                         } else {
                             try? viewModel.realm.write {
-                                viewModel.realm.add(Setting(apiKey: apiKey, proxyUrl: proxyUrl))
+                                viewModel.realm.add(Setting(apiKey: apiKey, gptModel: gptModel))
                             }
                         }
                     }) {

@@ -42,6 +42,24 @@ struct ContentView: View {
     var realm: Realm
     
     init() {
+        // 定义 Realm 配置，包括新的 schema 版本和迁移逻辑。
+        let config = Realm.Configuration(
+            // 设置新的 schema 版本。这必须大于之前使用的版本（如果你从未设置过版本，那么这个版本号应该是 0）。
+            schemaVersion: 1,
+
+            // 当我们打开一个 schema 版本较旧的 Realm 时，将会自动调用这个闭包。
+            migrationBlock: { migration, oldSchemaVersion in
+                // 我们还没有迁移逻辑，因为 schemaVersion 是 0
+                if (oldSchemaVersion < 1) {
+                    // 什么都不做，Realm 会自动检测新的属性和移除的属性
+                    // 并且会自动更新磁盘上的 schema
+                }
+            }
+        )
+
+        // 告诉 Realm 为这个应用使用这个新的配置对象
+        Realm.Configuration.defaultConfiguration = config
+
         realm = try! Realm()
         if chats.isEmpty {
             let chat = Chat(name: "技术问答 Chat 1")

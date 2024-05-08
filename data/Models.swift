@@ -22,15 +22,15 @@ class Chat: Object, ObjectKeyIdentifiable {
 class Setting: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var apiKey: String = ""
-//    @Persisted var gptModel: String = ""
+    @Persisted var gptModel: String = "gpt-4"
 //    @Persisted var maxToken: Int = 3000
 //    @Persisted var contextNum: Int = 10
     @Persisted var proxyUrl: String = ""
     
-    convenience init(apiKey: String, proxyUrl: String) {
+    convenience init(apiKey: String, gptModel: String) {
        self.init()
        self.apiKey = apiKey
-       self.proxyUrl = proxyUrl
+       self.gptModel = gptModel
     }
 }
 
